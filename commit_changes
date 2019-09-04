@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git commit -am "Updating protocol"
+cd gabriel-server-common
+git commit -am "Updating protocol"
+cd ..
+#cd gabriel-android-common
+#git commit -am "Updating protocol"
+#cd ..
+git push --recurse-submodules=check
