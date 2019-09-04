@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd gabriel-server-common
+git commit -am "Updating protocol"
+cd ..
+
+#cd gabriel-android-common
+#git commit -am "Updating protocol"
+#cd ..
+
+git push --recurse-submodules=check
+
+# Putting this line before the first push gives us an error
+git commit -am "Updating protocol"
+
+git push
