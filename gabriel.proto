@@ -1,4 +1,3 @@
-//change
 syntax = "proto3";
 
 package gabriel;

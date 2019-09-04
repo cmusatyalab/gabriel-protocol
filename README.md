@@ -17,15 +17,8 @@ You can then compile `gabriel.proto` by running the following lines:
 1. `/path/to/protoc --python_out=gabriel-server-common/ gabriel.proto`
 2. `/path/to/protoc --java_out=../client/legacy-android-client/app/src/main/java/ update.proto`
 
-You must commit changes to submodules. Unfortunately this requires a few steps.
-I hope to make this process easier in the future. For now, run the following:
-1. `cd gabriel-server-common`
-2. `git commit -am "updating protocol"`
-3. `cd ..`
-4. `cd gabriel-android-common`
-5. `git commit -am "updating protocol"`
-6. `cd ..`
-7. `git push --recurse-submodules=check`.
+Commit and push changes to this repository and its submodules by running
+`./commit_push_changes`
 
 # Other Potentially Helpful Information
 
