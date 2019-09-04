@@ -1,0 +1,3 @@
+[submodule "gabriel-server-common"]
+	path = gabriel-server-common
+	url = git@github.com:cmusatyalab/gabriel-server-common.git
