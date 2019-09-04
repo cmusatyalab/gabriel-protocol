@@ -1,6 +1,5 @@
 #!/bin/bash
 
-git commit -am "Updating protocol"
 cd gabriel-server-common
 git commit -am "Updating protocol"
 cd ..
@@ -8,3 +7,5 @@ cd ..
 #git commit -am "Updating protocol"
 #cd ..
 git push --recurse-submodules=check
+git commit -am "Updating protocol"
+git push
