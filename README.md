@@ -20,10 +20,10 @@ You can then compile `gabriel.proto` by running the following lines:
 You must commit changes to submodules. Unfortunately this requires a few steps.
 I hope to make this process easier in the future. For now, run the following:
 1. `cd gabriel-server-common`
-2. `git commit -am "updating protocol"
+2. `git commit -am "updating protocol"`
 3. `cd ..`
 4. `cd gabriel-android-common`
-5. `git commit -am "updating protocol"
+5. `git commit -am "updating protocol"`
 6. `cd ..`
 7. `git push --recurse-submodules=check`.
 
