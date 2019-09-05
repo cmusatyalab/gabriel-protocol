@@ -6,13 +6,14 @@ option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
 
 message Input {
-    uint64 frame_id = 1;
     enum Type {
         IMAGE = 0;
         VIDEO = 1;
         AUDIO = 2;
-        ACCEL = 3;
+        ACCELEROMETER = 3;
     }
+
+    uint64 frame_id = 1;
     Type type = 2;
     bytes payload = 3;
 
@@ -24,19 +25,20 @@ message Input {
 message Output {
     enum Status {
         SUCCESS = 0;
-        ERROR = 1;
+        UNSPECIFIED_ERROR = 1;
 	QUEUE_FULL = 2;
-    }
-
-    enum ResultType {
-        ANIMATION = 0;
-        VIDEO = 1;
-        IMAGE = 2;
-        AUDIO = 3;
-        TEXT = 4;
+	WRONG_INPUT_FORMAT = 3;
     }
 
     message Result {
+	enum ResultType {
+	    ANIMATION = 0;
+	    VIDEO = 1;
+	    IMAGE = 2;
+	    AUDIO = 3;
+	    TEXT = 4;
+	}
+
         ResultType type = 1;
         bytes payload = 2;
     }
