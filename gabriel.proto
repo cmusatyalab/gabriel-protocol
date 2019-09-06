@@ -17,12 +17,9 @@ message FromClient {
     Type type = 2;
     bytes payload = 3;
 
-    // Only used by Server:
-    string host = 4;
-
     // engine-specific fields:
     // OpenArtist:
-    string style = 5;
+    string style = 4;
 }
 
 message FromServer {
@@ -35,11 +32,11 @@ message FromServer {
 
     message Result {
 	enum ResultType {
-	    ANIMATION = 0;
+	    IMAGE = 0;
 	    VIDEO = 1;
-	    IMAGE = 2;
-	    AUDIO = 3;
-	    TEXT = 4;
+	    AUDIO = 2;
+	    TEXT = 3;
+	    ANIMATION = 4;
 	}
 
         ResultType type = 1;
@@ -49,7 +46,4 @@ message FromServer {
     uint64 frame_id = 1;
     Status status = 2;
     repeated Result results = 3;
-
-    // Only used by Gabriel server
-    string host = 4;
 }
