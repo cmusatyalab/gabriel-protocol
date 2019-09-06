@@ -11,6 +11,7 @@ cd ..
 
 cd openrtist
 git commit -am "Updating protocol"
+git push
 cd ..
 
 git commit -am "Updating protocol"
