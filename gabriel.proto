@@ -5,7 +5,7 @@ package gabriel;
 option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
 
-message Input {
+message FromClient {
     enum Type {
         IMAGE = 0;
         VIDEO = 1;
@@ -17,12 +17,15 @@ message Input {
     Type type = 2;
     bytes payload = 3;
 
+    // Only used by Server:
+    string host = 4;
+
     // engine-specific fields:
     // OpenArtist:
-    string style = 4;
+    string style = 5;
 }
 
-message Output {
+message FromServer {
     enum Status {
         SUCCESS = 0;
         UNSPECIFIED_ERROR = 1;
@@ -46,4 +49,7 @@ message Output {
     uint64 frame_id = 1;
     Status status = 2;
     repeated Result results = 3;
+
+    // Only used by Gabriel server
+    string host = 4;
 }
