@@ -2,10 +2,11 @@
 When cloning this repository for the first time, you must run
 `git submodule update --init --recursive` to check out all of the gabriel-common
 repositories. These repositories contain files generated from `gabriel.proto`,
-and these files must be updated any time `gabriel.proto` is modified. When
-making future changes to the protocol, update this repository and all of its
-submodules with the command `git pull --recurse-submodules` before making any
-changes.
+and these files must be updated any time `gabriel.proto` is modified.
+
+You must then run `git pull --recurse-submodules` to ensure that the submodules
+are updated the the latest version. You must run this command before every change
+you make to files in the submodules.
 
 You should use version 3.0 of the protobuf compiler. You can find instructions
 to download a binary of this version of the compiler
