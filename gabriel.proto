@@ -33,6 +33,7 @@ message FromServer {
         UNSPECIFIED_ERROR = 1;
 	QUEUE_FULL = 2;
 	WRONG_INPUT_FORMAT = 3;
+	REQUESTED_ENGINE_NOT_AVAILABLE = 4;
     }
 
     message Result {
