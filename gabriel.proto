@@ -5,6 +5,10 @@ package gabriel;
 option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
 
+enum Engine {
+    OPENRTIST = 0;
+}
+
 message FromClient {
     enum Type {
         IMAGE = 0;
@@ -15,11 +19,12 @@ message FromClient {
 
     uint64 frame_id = 1;
     Type type = 2;
-    bytes payload = 3;
+    Engine engine = 3;
+    bytes payload = 4;
 
     // engine-specific fields:
     // OpenArtist:
-    string style = 4;
+    string style = 5;
 }
 
 message FromServer {
@@ -40,7 +45,8 @@ message FromServer {
 	}
 
         ResultType type = 1;
-        bytes payload = 2;
+	Engine engine = 2;
+        bytes payload = 3;
     }
 
     uint64 frame_id = 1;
