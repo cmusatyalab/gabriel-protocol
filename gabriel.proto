@@ -9,6 +9,7 @@ enum Engine {
     OPENRTIST = 0;
 }
 
+// Messages sent from client to server
 message FromClient {
     enum Type {
         IMAGE = 0;
@@ -27,6 +28,13 @@ message FromClient {
     string style = 5;
 }
 
+message EngineServer {
+    string host = 1;
+    int32 port = 2;
+    bytes from_client = 3;
+}
+
+// Messages sent from server to client
 message FromServer {
     enum Status {
         SUCCESS = 0;
