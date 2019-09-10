@@ -7,6 +7,7 @@ option java_outer_classname = "Protos";
 
 enum Engine {
     OPENRTIST = 0;
+    LEGO = 1;
 }
 
 // Messages sent from client to server
@@ -39,22 +40,24 @@ message FromServer {
     enum Status {
         SUCCESS = 0;
         UNSPECIFIED_ERROR = 1;
-	QUEUE_FULL = 2;
-	WRONG_INPUT_FORMAT = 3;
-	REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+        QUEUE_FULL = 2;
+        WRONG_INPUT_FORMAT = 3;
+        REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+        TASK_ERROR = 5;
+        CV_ERROR = 6;
     }
 
     message Result {
-	enum ResultType {
-	    IMAGE = 0;
-	    VIDEO = 1;
-	    AUDIO = 2;
-	    TEXT = 3;
-	    ANIMATION = 4;
-	}
+        enum ResultType {
+            IMAGE = 0;
+            VIDEO = 1;
+            AUDIO = 2;
+            TEXT = 3;
+            ANIMATION = 4;
+        }
 
         ResultType type = 1;
-	Engine engine = 2;
+        Engine engine = 2;
         bytes payload = 3;
     }
 
