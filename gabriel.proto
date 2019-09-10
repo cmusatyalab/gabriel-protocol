@@ -2,12 +2,10 @@ syntax = "proto3";
 
 package gabriel;
 
+import "google/protobuf/any.proto";
+
 option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
-
-enum Engine {
-    OPENRTIST = 0;
-}
 
 // Messages sent from client to server
 message FromClient {
@@ -20,12 +18,10 @@ message FromClient {
 
     uint64 frame_id = 1;
     Type type = 2;
-    Engine engine = 3;
+    string engine_name = 3;
     bytes payload = 4;
 
-    // engine-specific fields:
-    // OpenArtist:
-    string style = 5;
+    google.protobuf.Any engine_fields = 5;
 }
 
 message EngineServer {
@@ -38,10 +34,12 @@ message EngineServer {
 message FromServer {
     enum Status {
         SUCCESS = 0;
-        UNSPECIFIED_ERROR = 1;
-	QUEUE_FULL = 2;
+	WELCOME_MESSAGE = 1;
+        UNSPECIFIED_ERROR = 2;
 	WRONG_INPUT_FORMAT = 3;
 	REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+	NO_TOKENS = 5;
+	QUEUE_FULL = 6;
     }
 
     message Result {
@@ -54,7 +52,7 @@ message FromServer {
 	}
 
         ResultType type = 1;
-	Engine engine = 2;
+	string engine_name = 2;
         bytes payload = 3;
     }
 
