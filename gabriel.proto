@@ -31,7 +31,7 @@ message FromClient {
 message EngineServer {
     string host = 1;
     int32 port = 2;
-    bytes from_client = 3;
+    bytes serialized_proto = 3;
 }
 
 // Messages sent from server to client
