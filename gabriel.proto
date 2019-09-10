@@ -16,7 +16,7 @@ message FromClient {
         ACCELEROMETER = 3;
     }
 
-    uint64 frame_id = 1;
+    int64 frame_id = 1;
     Type type = 2;
     string engine_name = 3;
     bytes payload = 4;
@@ -58,5 +58,6 @@ message FromServer {
 
     uint64 frame_id = 1;
     Status status = 2;
-    repeated Result results = 3;
+    int32 num_tokens = 3;
+    repeated Result results = 4;
 }
