@@ -7,54 +7,49 @@ import "google/protobuf/any.proto";
 option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
 
-message FromClient {
-    enum Type {
-        IMAGE = 0;
-        VIDEO = 1;
-        AUDIO = 2;
-        ACCELEROMETER = 3;
-    }
+enum PayloadType {
+    IMAGE = 0;
+    VIDEO = 1;
+    AUDIO = 2;
+    ACCELEROMETER = 3;
+    TEXT = 4;
+    ANIMATION = 5;
+}
 
+message FromClient {
     int64 frame_id = 1;
-    Type type = 2;
+    PayloadType payload_type = 2;
     string engine_name = 3;
     bytes payload = 4;
 
     google.protobuf.Any engine_fields = 5;
 }
 
-message ToClient {
-    message Content {
-	enum Status {
-	    SUCCESS = 0;
-	    WELCOME_MESSAGE = 1;
-	    UNSPECIFIED_ERROR = 2;
-	    WRONG_INPUT_FORMAT = 3;
-	    REQUESTED_ENGINE_NOT_AVAILABLE = 4;
-	    NO_TOKENS = 5;
-	    QUEUE_FULL = 6;
-	}
-
-	message Result {
-	    enum ResultType {
-		IMAGE = 0;
-		VIDEO = 1;
-		AUDIO = 2;
-		TEXT = 3;
-		ANIMATION = 4;
-	    }
-
-	    ResultType type = 1;
-	    string engine_name = 2;
-	    bytes payload = 3;
-	}
-
-    	int64 frame_id = 1;
-        Status status = 2;
-	repeated Result results = 4;
+message ResultWrapper {
+    enum Status {
+	SUCCESS = 0;
+	WELCOME_MESSAGE = 1;
+	UNSPECIFIED_ERROR = 2;
+	WRONG_INPUT_FORMAT = 3;
+	REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+	NO_TOKENS = 5;
+	QUEUE_FULL = 6;
     }
 
-    Content content = 1;
+    message Result {
+	PayloadType payload_type = 1;
+	string engine_name = 2;
+	bytes payload = 3;
+    }
+
+    int64 frame_id = 1;
+    Status status = 2;
+    repeated Result results = 4;
+}
+
+
+message ToClient {
+    ResultWrapper result_wrapper = 1;
     int32 num_tokens = 2;
 }
 
@@ -63,6 +58,6 @@ message ToFromEngine {
     int32 port = 2;
     oneof client_message {
         FromClient from_client = 3;
-    	ToClient.Content content = 4;
+    	ResultWrapper result_wrapper = 4;
     }
 }
