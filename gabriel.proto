@@ -7,7 +7,6 @@ import "google/protobuf/any.proto";
 option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
 
-// Messages sent from client to server
 message FromClient {
     enum Type {
         IMAGE = 0;
@@ -24,40 +23,46 @@ message FromClient {
     google.protobuf.Any engine_fields = 5;
 }
 
-message EngineServer {
-    string host = 1;
-    int32 port = 2;
-    bytes serialized_proto = 3;
-}
-
-// Messages sent from server to client
-message FromServer {
-    enum Status {
-        SUCCESS = 0;
-	WELCOME_MESSAGE = 1;
-        UNSPECIFIED_ERROR = 2;
-	WRONG_INPUT_FORMAT = 3;
-	REQUESTED_ENGINE_NOT_AVAILABLE = 4;
-	NO_TOKENS = 5;
-	QUEUE_FULL = 6;
-    }
-
-    message Result {
-	enum ResultType {
-	    IMAGE = 0;
-	    VIDEO = 1;
-	    AUDIO = 2;
-	    TEXT = 3;
-	    ANIMATION = 4;
+message ToClient {
+    message Content {
+	enum Status {
+	    SUCCESS = 0;
+	    WELCOME_MESSAGE = 1;
+	    UNSPECIFIED_ERROR = 2;
+	    WRONG_INPUT_FORMAT = 3;
+	    REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+	    NO_TOKENS = 5;
+	    QUEUE_FULL = 6;
 	}
 
-        ResultType type = 1;
-	string engine_name = 2;
-        bytes payload = 3;
+	message Result {
+	    enum ResultType {
+		IMAGE = 0;
+		VIDEO = 1;
+		AUDIO = 2;
+		TEXT = 3;
+		ANIMATION = 4;
+	    }
+
+	    ResultType type = 1;
+	    string engine_name = 2;
+	    bytes payload = 3;
+	}
+
+    	int64 frame_id = 1;
+        Status status = 2;
+	repeated Result results = 4;
     }
 
-    uint64 frame_id = 1;
-    Status status = 2;
-    int32 num_tokens = 3;
-    repeated Result results = 4;
+    Content content = 1
+    int32 num_tokens = 2;
+}
+
+message ToFromEngine {
+    string host = 1;
+    int32 port = 2;
+    oneof client_message {
+        FromClient from_client = 3;
+    	ToClient.content content = 4;
+    }
 }
