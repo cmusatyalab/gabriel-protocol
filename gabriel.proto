@@ -2,15 +2,11 @@ syntax = "proto3";
 
 package gabriel;
 
+import "google/protobuf/any.proto";
+
 option java_package = "edu.cmu.cs.gabriel.network";
 option java_outer_classname = "Protos";
 
-enum Engine {
-    OPENRTIST = 0;
-    LEGO = 1;
-}
-
-// Messages sent from client to server
 message FromClient {
     enum Type {
         IMAGE = 0;
@@ -19,49 +15,54 @@ message FromClient {
         ACCELEROMETER = 3;
     }
 
-    uint64 frame_id = 1;
+    int64 frame_id = 1;
     Type type = 2;
-    Engine engine = 3;
+    string engine_name = 3;
     bytes payload = 4;
 
-    // engine-specific fields:
-    // OpenArtist:
-    string style = 5;
+    google.protobuf.Any engine_fields = 5;
 }
 
-message EngineServer {
+message ToClient {
+    message Content {
+	enum Status {
+	    SUCCESS = 0;
+	    WELCOME_MESSAGE = 1;
+	    UNSPECIFIED_ERROR = 2;
+	    WRONG_INPUT_FORMAT = 3;
+	    REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+	    NO_TOKENS = 5;
+	    QUEUE_FULL = 6;
+	}
+
+	message Result {
+	    enum ResultType {
+		IMAGE = 0;
+		VIDEO = 1;
+		AUDIO = 2;
+		TEXT = 3;
+		ANIMATION = 4;
+	    }
+
+	    ResultType type = 1;
+	    string engine_name = 2;
+	    bytes payload = 3;
+	}
+
+    	int64 frame_id = 1;
+        Status status = 2;
+	repeated Result results = 4;
+    }
+
+    Content content = 1;
+    int32 num_tokens = 2;
+}
+
+message ToFromEngine {
     string host = 1;
     int32 port = 2;
-    bytes serialized_proto = 3;
-}
-
-// Messages sent from server to client
-message FromServer {
-    enum Status {
-        SUCCESS = 0;
-        UNSPECIFIED_ERROR = 1;
-        QUEUE_FULL = 2;
-        WRONG_INPUT_FORMAT = 3;
-        REQUESTED_ENGINE_NOT_AVAILABLE = 4;
-        TASK_ERROR = 5;
-        CV_ERROR = 6;
+    oneof client_message {
+        FromClient from_client = 3;
+    	ToClient.Content content = 4;
     }
-
-    message Result {
-        enum ResultType {
-            IMAGE = 0;
-            VIDEO = 1;
-            AUDIO = 2;
-            TEXT = 3;
-            ANIMATION = 4;
-        }
-
-        ResultType type = 1;
-        Engine engine = 2;
-        bytes payload = 3;
-    }
-
-    uint64 frame_id = 1;
-    Status status = 2;
-    repeated Result results = 3;
 }
