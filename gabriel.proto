@@ -33,6 +33,7 @@ message ToClient {
             REQUESTED_ENGINE_NOT_AVAILABLE = 4;
             NO_TOKENS = 5;
             QUEUE_FULL = 6;
+            ENGINE_ERROR = 7; // errors that are not related to Gabriel but rather to the engine itself.
         }
 
         message Result {
@@ -52,6 +53,7 @@ message ToClient {
         int64 frame_id = 1;
         Status status = 2;
         repeated Result results = 4;
+        google.protobuf.Any engine_fields = 5; // engine needs to be able to pass state back to client.
     }
 
     Content content = 1;
