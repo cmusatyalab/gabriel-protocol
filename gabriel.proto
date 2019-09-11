@@ -54,7 +54,7 @@ message ToClient {
 	repeated Result results = 4;
     }
 
-    Content content = 1
+    Content content = 1;
     int32 num_tokens = 2;
 }
 
@@ -63,6 +63,6 @@ message ToFromEngine {
     int32 port = 2;
     oneof client_message {
         FromClient from_client = 3;
-    	ToClient.content content = 4;
+    	ToClient.Content content = 4;
     }
 }
