@@ -9,7 +9,7 @@ git commit -am "Updating protocol"
 git push
 cd ..
 
-cd openrtist
+cd gabriel-android-common
 git commit -am "Updating protocol"
 git push
 cd ..
