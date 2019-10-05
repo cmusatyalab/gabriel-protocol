@@ -2,8 +2,3 @@
 	path = gabriel-server-common
 	url = git@github.com:cmusatyalab/gabriel-server-common.git
 	update = merge
-[submodule "openrtist"]
-	path = openrtist
-	url = git@github.com:cmusatyalab/openrtist.git
-	branch = new-gabriel
-	update = merge
