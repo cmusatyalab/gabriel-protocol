@@ -16,7 +16,7 @@ The compiler takes a while to build, so I recommend downloading a binary instead
 of compiling it yourself.
 
 You can then compile `gabriel.proto` by running the following lines:
-1. `/path/to/protoc --python_out=gabriel-server-common/ gabriel.proto`
+1. `/path/to/protoc --python_out=python/src/gabriel_protocol/ gabriel.proto`
 2. `/path/to/protoc --java_out=openrtist/gabriel-client-openrtist-android/app/src/main/java/ gabriel.proto`
 
 Commit and push changes to this repository and its submodules by running
