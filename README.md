@@ -17,7 +17,7 @@ of compiling it yourself.
 
 You can then compile `gabriel.proto` by running the following lines:
 1. `/path/to/protoc --python_out=python/src/gabriel_protocol/ gabriel.proto`
-2. `/path/to/protoc --java_out=gabriel-android-common/gabrielclient/src/main/java/ gabriel.proto`
+2. `/path/to/protoc --java_out=java/gabrielprotocol/src/main/java/`
 
 ## Publishing Changes to PyPi
 
