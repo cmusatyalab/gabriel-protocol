@@ -1,8 +1,0 @@
-[submodule "gabriel-server-common"]
-	path = gabriel-server-common
-	url = git@github.com:cmusatyalab/gabriel-server-common.git
-	update = merge
-[submodule "gabriel-android-common"]
-	path = gabriel-android-common
-	url = git@github.com:cmusatyalab/gabriel-android-common.git
-	update = merge
