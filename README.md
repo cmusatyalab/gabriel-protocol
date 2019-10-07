@@ -19,12 +19,6 @@ You can then compile `gabriel.proto` by running the following lines:
 1. `/path/to/protoc --python_out=python/src/gabriel_protocol/ gabriel.proto`
 2. `/path/to/protoc --java_out=gabriel-android-common/gabrielclient/src/main/java/ gabriel.proto`
 
-Commit and push changes to this repository and its submodules by running
-`./commit_push_changes`
+## Publishing Changes to PyPi
 
-# Other Potentially Helpful Information
-
-You can check the status of submodules with the command `git submodule status`.
-
-Note that Scarlet does not use protobuf lite. Therefore, we use the standard
-protobuf compiler for the Android client.
+Update the version number in python/setup.py. Then follow [these instructions](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives).
