@@ -1,13 +1,4 @@
 # Updating Protocol
-When cloning this repository for the first time, you must run
-`git submodule update --init --recursive --remote` to check out all of the
-gabriel-common repositories. These repositories contain files generated from
-`gabriel.proto`, and these files must be updated any time `gabriel.proto` is
-modified.
-
-If you leave this repository unchanged for a while, you should run
-`git submodule update --recursive --remote` before making any changes
-to a submodule.
 
 You should use version 3.0 of the protobuf compiler. You can find instructions
 to download a binary of this version of the compiler
@@ -29,11 +20,11 @@ Update the version number in python/setup.py. Then follow [these instructions](h
    `-SNAPSHOT` to the end of the version number to get a snapshot published
    instead.
 2. Open the `Gradle` tab in the top right of Android studio.
-3. Open `gabrielprotocol/Tasks/upload`.
+3. Open `protocol/Tasks/upload`.
 4. Run uploadArchives
 5. Snapshots will be published to
-   https://oss.sonatype.org/content/repositories/snapshots/edu/cmu/cs/.
+   https://oss.sonatype.org/content/repositories/snapshots/edu/cmu/cs/gabriel/protocol/.
 6. Relases should show up at https://oss.sonatype.org/#stagingRepositories.
    1. Publish a release by first clicking the `Close` button. Then click the
       `Release` button when it becomes available.
-   2. Releases will be published to https://repo1.maven.org/maven2/edu/cmu/cs/.
+   2. Releases will be published to https://repo1.maven.org/maven2/edu/cmu/cs/gabriel/protocol/.
