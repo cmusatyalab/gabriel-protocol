@@ -1,0 +1,6 @@
+apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: 'java-library'
+
+dependencies {
+    implementation 'com.google.protobuf:protobuf-java:3.4.0'
+}
