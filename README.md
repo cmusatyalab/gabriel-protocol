@@ -16,15 +16,4 @@ Update the version number in python/setup.py. Then follow [these instructions](h
 
 ## Publishing Changes to Maven Central
 
-1. Update the VERSION_NAME parameter in `gradle.properties`. You can add
-   `-SNAPSHOT` to the end of the version number to get a snapshot published
-   instead.
-2. Open the `Gradle` tab in the top right of Android studio.
-3. Open `protocol/Tasks/upload`.
-4. Run uploadArchives
-5. Snapshots will be published to
-   https://oss.sonatype.org/content/repositories/snapshots/edu/cmu/cs/gabriel/protocol/.
-6. Relases should show up at https://oss.sonatype.org/#stagingRepositories.
-   1. Publish a release by first clicking the `Close` button. Then click the
-      `Release` button when it becomes available.
-   2. Releases will be published to https://repo1.maven.org/maven2/edu/cmu/cs/gabriel/protocol/.
+Follow [these instructions](https://github.com/cmusatyalab/gabriel-android-common/blob/master/README.md#publishing-changes-to-maven-central).
