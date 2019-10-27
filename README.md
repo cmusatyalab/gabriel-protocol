@@ -6,9 +6,11 @@ to download a binary of this version of the compiler
 The compiler takes a while to build, so I recommend downloading a binary instead
 of compiling it yourself.
 
-You can then compile `gabriel.proto` by running the following lines:
+You can then compile `gabriel.proto` for Python by running the following line:
 1. `/path/to/protoc --python_out=python/src/gabriel_protocol/ gabriel.proto`
-2. `/path/to/protoc --java_out=java/protocol/src/main/java/ gabriel.proto`
+
+Compile the proto for Java by opening the project in the `java` directory in
+Android studio and running `build`.
 
 ## Publishing Changes to PyPi
 

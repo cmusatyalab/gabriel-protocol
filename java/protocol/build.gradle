@@ -2,10 +2,15 @@ apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
 
+def grpcVersion = '1.20.0'
+
 dependencies {
     // TODO: Replace these with protobuf-javalite once MobilEdgeX supports it
-    api 'com.google.protobuf:protobuf-lite:3.0.1'
-    api 'com.google.protobuf:protobuf-java:3.7.1'
+    implementation "io.grpc:grpc-protobuf-lite:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+
+    // Uncomment this line to include protobuf dependencies in the JAR file
+    // protobuf "io.grpc:grpc-protobuf:${grpcVersion}"
 }
 
 protobuf {
@@ -31,6 +36,7 @@ protobuf {
                     outputSubDir = 'java'
                 }
             }
+
         }
     }
 
