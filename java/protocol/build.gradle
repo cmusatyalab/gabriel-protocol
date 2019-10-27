@@ -2,8 +2,6 @@ apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
 
-def grpcVersion = '1.20.0'
-
 dependencies {
     // TODO: Replace these with protobuf-javalite once MobilEdgeX supports it and use implementation instead of compileOnly
     compileOnly 'com.google.protobuf:protobuf-lite:3.0.1'
