@@ -5,12 +5,12 @@ apply plugin: 'com.google.protobuf'
 def grpcVersion = '1.20.0'
 
 dependencies {
-    // TODO: Replace these with protobuf-javalite once MobilEdgeX supports it
-    implementation "io.grpc:grpc-protobuf-lite:${grpcVersion}"
-    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    // TODO: Replace these with protobuf-javalite once MobilEdgeX supports it and use implementation instead of compileOnly
+    compileOnly 'com.google.protobuf:protobuf-lite:3.0.1'
+    compileOnly 'com.google.protobuf:protobuf-java:3.7.1'
 
     // Uncomment this line to include protobuf dependencies in the JAR file
-    // protobuf "io.grpc:grpc-protobuf:${grpcVersion}"
+    // protobuf 'com.google.protobuf:protobuf-java:3.7.1'
 }
 
 protobuf {
