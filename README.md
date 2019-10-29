@@ -10,7 +10,9 @@ You can then compile `gabriel.proto` for Python by running the following line:
 1. `/path/to/protoc --python_out=python/src/gabriel_protocol/ gabriel.proto`
 
 Compile the proto for Java by opening the project in the `java` directory in
-Android studio and running `build`.
+Android studio, clicking the `Gradle` button in the top right, and selecting
+`java` > `Tasks` > `build`, `build`. Do not select any of the build tasks
+specific to any of the modules (such as `protocol`).
 
 ## Publishing Changes to PyPi
 

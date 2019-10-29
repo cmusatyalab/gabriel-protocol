@@ -2,52 +2,34 @@ apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
 
-def grpcVersion = '1.20.0'
-
 dependencies {
-    // TODO: Replace these with protobuf-javalite once MobilEdgeX supports it
-    implementation "io.grpc:grpc-protobuf-lite:${grpcVersion}"
-    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
-
-    // Uncomment this line to include protobuf dependencies in the JAR file
-    // protobuf "io.grpc:grpc-protobuf:${grpcVersion}"
+    // You need to depend on the lite runtime library, not protobuf-java
+    api 'com.google.protobuf:protobuf-javalite:3.8.0'
 }
 
 protobuf {
     protoc {
-        // You still need protoc like in the non-Android case
-        artifact = 'com.google.protobuf:protoc:3.7.0'
-    }
-    plugins {
-        javalite {
-            // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
+        artifact = 'com.google.protobuf:protoc:3.8.0'
     }
     generateProtoTasks {
         all().each { task ->
             task.builtins {
-                // In most cases you don't need the full Java output
-                // if you use the lite output.
-                remove java
-            }
-            task.plugins {
-                javalite {
+                java {
+                    option 'lite'
                     outputSubDir = 'java'
                 }
             }
-
         }
     }
 
-    generatedFilesBaseDir = 'src'
+    generatedFilesBaseDir = 'protocol/src'
 }
 
 sourceSets {
     main {
         proto {
             // In addition to the default 'src/main/proto'
-            srcDir 'protos'
+            srcDir '../protos'
         }
     }
 }

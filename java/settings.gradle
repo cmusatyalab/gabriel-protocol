@@ -1,1 +1,1 @@
-include ':protocol'
+include ':protocol-old-protobuf', ':protocol', ':protocol-for-mobiledgex'
