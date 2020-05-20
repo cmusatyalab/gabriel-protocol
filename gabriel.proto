@@ -11,7 +11,7 @@ enum PayloadType {
     IMAGE = 0;
     VIDEO = 1;
     AUDIO = 2;
-    ACCELEROMETER = 3;
+    IMU = 3;
     TEXT = 4;
     ANIMATION = 5;
 }
@@ -19,34 +19,56 @@ enum PayloadType {
 message FromClient {
     int64 frame_id = 1;
     PayloadType payload_type = 2;
-    string engine_name = 3;
-    bytes payload = 4;
+    string filter_passed = 3;
+    repeated bytes payloads_for_frame = 4;
 
-    google.protobuf.Any engine_fields = 5;
+    google.protobuf.Any extras = 5;
 }
 
 message ResultWrapper {
+    // From https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto#L120
+    // TODO: Switch to google.protobuf.StringValue once MobilEdgeX supports protobuf-javalite
+    message StringValue {
+        // The string value.
+     	string value = 1;
+    }
+
     enum Status {
         SUCCESS = 0;
         WELCOME_MESSAGE = 1;
         UNSPECIFIED_ERROR = 2;
+
+	// Cognitive engine expected different PayloadType from this filter
         WRONG_INPUT_FORMAT = 3;
-        REQUESTED_ENGINE_NOT_AVAILABLE = 4;
+
+	// No Cognitive engines accept frames from filter_passed
+        NO_ENGINE_FOR_FILTER_PASSED = 4;
+
+	// This client has no tokens to send frames from filter_passed
         NO_TOKENS = 5;
-        QUEUE_FULL = 6;
-        ENGINE_ERROR = 7; // errors that are not related to Gabriel but rather to the engine itself.
+
+	// The server will drop frames when it is backed up.
+        SERVER_DROPPED_FRAME = 6;
+
+	// Errors that are not related to Gabriel but rather to the engine
+	// itself.
+        ENGINE_ERROR = 7;
     }
 
     message Result {
         PayloadType payload_type = 1;
-        string engine_name = 2;
-        bytes payload = 3;
+        bytes payload = 2;
     }
 
     int64 frame_id = 1;
     Status status = 2;
     repeated Result results = 3;
-    google.protobuf.Any engine_fields = 4; // engine needs to be able to pass state back to client.
+
+    // Specify the name of the module that produced the result
+    StringValue result_producer_name = 4;
+
+    // Pass state back to client.
+    google.protobuf.Any extras = 5;
 }
 
 
@@ -55,11 +77,14 @@ message ToClient {
     int32 num_tokens = 2;
 }
 
-message ToFromEngine {
+message ToEngine {
     string host = 1;
     int32 port = 2;
-    oneof client_message {
-        FromClient from_client = 3;
-    	ResultWrapper result_wrapper = 4;
-    }
+    FromClient from_client = 3;
+}
+
+message FromEngine {
+    string host = 1;
+    int32 port = 2;
+    ResultWrapper result_wrapper = 3;
 }
