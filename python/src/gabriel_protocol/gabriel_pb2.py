@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='gabriel.proto',
   package='gabriel',
   syntax='proto3',
-  serialized_pb=_b('\n\rgabriel.proto\x12\x07gabriel\x1a\x19google/protobuf/any.proto\"\xa3\x01\n\nFromClient\x12\x10\n\x08\x66rame_id\x18\x01 \x01(\x03\x12*\n\x0cpayload_type\x18\x02 \x01(\x0e\x32\x14.gabriel.PayloadType\x12\x15\n\rfilter_passed\x18\x03 \x01(\t\x12\x1a\n\x12payloads_for_frame\x18\x04 \x03(\x0c\x12$\n\x06\x65xtras\x18\x05 \x01(\x0b\x32\x14.google.protobuf.Any\"\x85\x04\n\rResultWrapper\x12\x10\n\x08\x66rame_id\x18\x01 \x01(\x03\x12-\n\x06status\x18\x02 \x01(\x0e\x32\x1d.gabriel.ResultWrapper.Status\x12.\n\x07results\x18\x03 \x03(\x0b\x32\x1d.gabriel.ResultWrapper.Result\x12@\n\x14result_producer_name\x18\x04 \x01(\x0b\x32\".gabriel.ResultWrapper.StringValue\x12$\n\x06\x65xtras\x18\x05 \x01(\x0b\x32\x14.google.protobuf.Any\x1a\x1c\n\x0bStringValue\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x45\n\x06Result\x12*\n\x0cpayload_type\x18\x01 \x01(\x0e\x32\x14.gabriel.PayloadType\x12\x0f\n\x07payload\x18\x02 \x01(\x0c\"\xb5\x01\n\x06Status\x12\x0b\n\x07SUCCESS\x10\x00\x12\x13\n\x0fWELCOME_MESSAGE\x10\x01\x12\x15\n\x11UNSPECIFIED_ERROR\x10\x02\x12\x16\n\x12WRONG_INPUT_FORMAT\x10\x03\x12\x1f\n\x1bNO_ENGINE_FOR_FILTER_PASSED\x10\x04\x12\r\n\tNO_TOKENS\x10\x05\x12\x18\n\x14SERVER_DROPPED_FRAME\x10\x06\x12\x10\n\x0c\x45NGINE_ERROR\x10\x07\"N\n\x08ToClient\x12.\n\x0eresult_wrapper\x18\x01 \x01(\x0b\x32\x16.gabriel.ResultWrapper\x12\x12\n\nnum_tokens\x18\x02 \x01(\x05\"P\n\x08ToEngine\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\x12(\n\x0b\x66rom_client\x18\x03 \x01(\x0b\x32\x13.gabriel.FromClient\"X\n\nFromEngine\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\x12.\n\x0eresult_wrapper\x18\x03 \x01(\x0b\x32\x16.gabriel.ResultWrapper*P\n\x0bPayloadType\x12\t\n\x05IMAGE\x10\x00\x12\t\n\x05VIDEO\x10\x01\x12\t\n\x05\x41UDIO\x10\x02\x12\x07\n\x03IMU\x10\x03\x12\x08\n\x04TEXT\x10\x04\x12\r\n\tANIMATION\x10\x05\x42%\n\x1b\x65\x64u.cmu.cs.gabriel.protocolB\x06Protosb\x06proto3')
+  serialized_pb=_b('\n\rgabriel.proto\x12\x07gabriel\x1a\x19google/protobuf/any.proto\"\xa3\x01\n\nFromClient\x12\x10\n\x08\x66rame_id\x18\x01 \x01(\x03\x12*\n\x0cpayload_type\x18\x02 \x01(\x0e\x32\x14.gabriel.PayloadType\x12\x15\n\rfilter_passed\x18\x03 \x01(\t\x12\x1a\n\x12payloads_for_frame\x18\x04 \x03(\x0c\x12$\n\x06\x65xtras\x18\x05 \x01(\x0b\x32\x14.google.protobuf.Any\"\xf0\x03\n\rResultWrapper\x12\x10\n\x08\x66rame_id\x18\x01 \x01(\x03\x12-\n\x06status\x18\x02 \x01(\x0e\x32\x1d.gabriel.ResultWrapper.Status\x12.\n\x07results\x18\x03 \x03(\x0b\x32\x1d.gabriel.ResultWrapper.Result\x12@\n\x14result_producer_name\x18\x04 \x01(\x0b\x32\".gabriel.ResultWrapper.StringValue\x12$\n\x06\x65xtras\x18\x05 \x01(\x0b\x32\x14.google.protobuf.Any\x1a\x1c\n\x0bStringValue\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x45\n\x06Result\x12*\n\x0cpayload_type\x18\x01 \x01(\x0e\x32\x14.gabriel.PayloadType\x12\x0f\n\x07payload\x18\x02 \x01(\x0c\"\xa0\x01\n\x06Status\x12\x0b\n\x07SUCCESS\x10\x00\x12\x15\n\x11UNSPECIFIED_ERROR\x10\x01\x12\x10\n\x0c\x45NGINE_ERROR\x10\x02\x12\x16\n\x12WRONG_INPUT_FORMAT\x10\x03\x12\x1f\n\x1bNO_ENGINE_FOR_FILTER_PASSED\x10\x04\x12\r\n\tNO_TOKENS\x10\x05\x12\x18\n\x14SERVER_DROPPED_FRAME\x10\x06\"\xd9\x01\n\x08ToClient\x12\x30\n\x0eresult_wrapper\x18\x01 \x01(\x0b\x32\x16.gabriel.ResultWrapperH\x00\x12;\n\x0fwelcome_message\x18\x02 \x01(\x0b\x32 .gabriel.ToClient.WelcomeMessageH\x00\x1aI\n\x0eWelcomeMessage\x12\x18\n\x10\x66ilters_consumed\x18\x01 \x03(\t\x12\x1d\n\x15num_tokens_per_filter\x18\x02 \x01(\x05\x42\x13\n\x11welcome_or_result\"P\n\x08ToEngine\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\x12(\n\x0b\x66rom_client\x18\x03 \x01(\x0b\x32\x13.gabriel.FromClient\"X\n\nFromEngine\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\x12.\n\x0eresult_wrapper\x18\x03 \x01(\x0b\x32\x16.gabriel.ResultWrapper*P\n\x0bPayloadType\x12\t\n\x05IMAGE\x10\x00\x12\t\n\x05VIDEO\x10\x01\x12\t\n\x05\x41UDIO\x10\x02\x12\x07\n\x03IMU\x10\x03\x12\x08\n\x04TEXT\x10\x04\x12\r\n\tANIMATION\x10\x05\x42%\n\x1b\x65\x64u.cmu.cs.gabriel.protocolB\x06Protosb\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -59,8 +59,8 @@ _PAYLOADTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=991,
-  serialized_end=1071,
+  serialized_start=1110,
+  serialized_end=1190,
 )
 _sym_db.RegisterEnumDescriptor(_PAYLOADTYPE)
 
@@ -84,11 +84,11 @@ _RESULTWRAPPER_STATUS = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='WELCOME_MESSAGE', index=1, number=1,
+      name='UNSPECIFIED_ERROR', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='UNSPECIFIED_ERROR', index=2, number=2,
+      name='ENGINE_ERROR', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
@@ -107,15 +107,11 @@ _RESULTWRAPPER_STATUS = _descriptor.EnumDescriptor(
       name='SERVER_DROPPED_FRAME', index=6, number=6,
       options=None,
       type=None),
-    _descriptor.EnumValueDescriptor(
-      name='ENGINE_ERROR', index=7, number=7,
-      options=None,
-      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=556,
-  serialized_end=737,
+  serialized_end=716,
 )
 _sym_db.RegisterEnumDescriptor(_RESULTWRAPPER_STATUS)
 
@@ -302,26 +298,26 @@ _RESULTWRAPPER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=220,
-  serialized_end=737,
+  serialized_end=716,
 )
 
 
-_TOCLIENT = _descriptor.Descriptor(
-  name='ToClient',
-  full_name='gabriel.ToClient',
+_TOCLIENT_WELCOMEMESSAGE = _descriptor.Descriptor(
+  name='WelcomeMessage',
+  full_name='gabriel.ToClient.WelcomeMessage',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result_wrapper', full_name='gabriel.ToClient.result_wrapper', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='filters_consumed', full_name='gabriel.ToClient.WelcomeMessage.filters_consumed', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='num_tokens', full_name='gabriel.ToClient.num_tokens', index=1,
+      name='num_tokens_per_filter', full_name='gabriel.ToClient.WelcomeMessage.num_tokens_per_filter', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -339,8 +335,48 @@ _TOCLIENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=739,
-  serialized_end=817,
+  serialized_start=842,
+  serialized_end=915,
+)
+
+_TOCLIENT = _descriptor.Descriptor(
+  name='ToClient',
+  full_name='gabriel.ToClient',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result_wrapper', full_name='gabriel.ToClient.result_wrapper', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='welcome_message', full_name='gabriel.ToClient.welcome_message', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[_TOCLIENT_WELCOMEMESSAGE, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='welcome_or_result', full_name='gabriel.ToClient.welcome_or_result',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=719,
+  serialized_end=936,
 )
 
 
@@ -384,8 +420,8 @@ _TOENGINE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=819,
-  serialized_end=899,
+  serialized_start=938,
+  serialized_end=1018,
 )
 
 
@@ -429,8 +465,8 @@ _FROMENGINE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=901,
-  serialized_end=989,
+  serialized_start=1020,
+  serialized_end=1108,
 )
 
 _FROMCLIENT.fields_by_name['payload_type'].enum_type = _PAYLOADTYPE
@@ -443,7 +479,15 @@ _RESULTWRAPPER.fields_by_name['results'].message_type = _RESULTWRAPPER_RESULT
 _RESULTWRAPPER.fields_by_name['result_producer_name'].message_type = _RESULTWRAPPER_STRINGVALUE
 _RESULTWRAPPER.fields_by_name['extras'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 _RESULTWRAPPER_STATUS.containing_type = _RESULTWRAPPER
+_TOCLIENT_WELCOMEMESSAGE.containing_type = _TOCLIENT
 _TOCLIENT.fields_by_name['result_wrapper'].message_type = _RESULTWRAPPER
+_TOCLIENT.fields_by_name['welcome_message'].message_type = _TOCLIENT_WELCOMEMESSAGE
+_TOCLIENT.oneofs_by_name['welcome_or_result'].fields.append(
+  _TOCLIENT.fields_by_name['result_wrapper'])
+_TOCLIENT.fields_by_name['result_wrapper'].containing_oneof = _TOCLIENT.oneofs_by_name['welcome_or_result']
+_TOCLIENT.oneofs_by_name['welcome_or_result'].fields.append(
+  _TOCLIENT.fields_by_name['welcome_message'])
+_TOCLIENT.fields_by_name['welcome_message'].containing_oneof = _TOCLIENT.oneofs_by_name['welcome_or_result']
 _TOENGINE.fields_by_name['from_client'].message_type = _FROMCLIENT
 _FROMENGINE.fields_by_name['result_wrapper'].message_type = _RESULTWRAPPER
 DESCRIPTOR.message_types_by_name['FromClient'] = _FROMCLIENT
@@ -484,11 +528,19 @@ _sym_db.RegisterMessage(ResultWrapper.StringValue)
 _sym_db.RegisterMessage(ResultWrapper.Result)
 
 ToClient = _reflection.GeneratedProtocolMessageType('ToClient', (_message.Message,), dict(
+
+  WelcomeMessage = _reflection.GeneratedProtocolMessageType('WelcomeMessage', (_message.Message,), dict(
+    DESCRIPTOR = _TOCLIENT_WELCOMEMESSAGE,
+    __module__ = 'gabriel_pb2'
+    # @@protoc_insertion_point(class_scope:gabriel.ToClient.WelcomeMessage)
+    ))
+  ,
   DESCRIPTOR = _TOCLIENT,
   __module__ = 'gabriel_pb2'
   # @@protoc_insertion_point(class_scope:gabriel.ToClient)
   ))
 _sym_db.RegisterMessage(ToClient)
+_sym_db.RegisterMessage(ToClient.WelcomeMessage)
 
 ToEngine = _reflection.GeneratedProtocolMessageType('ToEngine', (_message.Message,), dict(
   DESCRIPTOR = _TOENGINE,

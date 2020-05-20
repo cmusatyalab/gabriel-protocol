@@ -35,8 +35,11 @@ message ResultWrapper {
 
     enum Status {
         SUCCESS = 0;
-        WELCOME_MESSAGE = 1;
-        UNSPECIFIED_ERROR = 2;
+	UNSPECIFIED_ERROR = 1;
+
+	// Errors that are not related to Gabriel but rather to the engine
+	// itself.
+        ENGINE_ERROR = 2;
 
 	// Cognitive engine expected different PayloadType from this filter
         WRONG_INPUT_FORMAT = 3;
@@ -47,12 +50,8 @@ message ResultWrapper {
 	// This client has no tokens to send frames from filter_passed
         NO_TOKENS = 5;
 
-	// The server will drop frames when it is backed up.
+	// The server dropped the frame because it was backed up
         SERVER_DROPPED_FRAME = 6;
-
-	// Errors that are not related to Gabriel but rather to the engine
-	// itself.
-        ENGINE_ERROR = 7;
     }
 
     message Result {
@@ -73,8 +72,15 @@ message ResultWrapper {
 
 
 message ToClient {
-    ResultWrapper result_wrapper = 1;
-    int32 num_tokens = 2;
+    message WelcomeMessage {
+        repeated string filters_consumed = 1;
+	int32 num_tokens_per_filter = 2;
+    }
+
+    oneof welcome_or_result {
+        ResultWrapper result_wrapper = 1;
+	WelcomeMessage welcome_message = 2;
+    }
 }
 
 message ToEngine {
