@@ -63,13 +63,16 @@ message ResultWrapper {
     Status status = 2;
     repeated Result results = 3;
 
+    // Specify the name of the filter the original frame passed to allow the
+    // client to return the token correctly
+    string filter_passed = 4;
+
     // Specify the name of the module that produced the result
-    StringValue result_producer_name = 4;
+    StringValue result_producer_name = 5;
 
     // Pass state back to client.
-    google.protobuf.Any extras = 5;
+    google.protobuf.Any extras = 6;
 }
-
 
 message ToClient {
     message WelcomeMessage {
