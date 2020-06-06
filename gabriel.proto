@@ -59,19 +59,19 @@ message ResultWrapper {
         bytes payload = 2;
     }
 
-    int64 frame_id = 1;
-    Status status = 2;
-    repeated Result results = 3;
-
     // Specify the name of the filter the original frame passed to allow the
     // client to return the token correctly
-    string filter_passed = 4;
+    string filter_passed = 1;
 
-    // Specify the name of the module that produced the result
-    StringValue result_producer_name = 5;
+    int64 frame_id = 2;
+    Status status = 3;
+    repeated Result results = 4;
 
     // Pass state back to client.
-    google.protobuf.Any extras = 6;
+    google.protobuf.Any extras = 5;
+
+    // Specify the name of the module that produced the result
+    StringValue result_producer_name = 6;
 }
 
 message ToClient {
@@ -84,6 +84,8 @@ message ToClient {
         ResultWrapper result_wrapper = 1;
 	WelcomeMessage welcome_message = 2;
     }
+
+    bool return_token = 3;
 }
 
 message ToEngine {
@@ -96,4 +98,5 @@ message FromEngine {
     string host = 1;
     int32 port = 2;
     ResultWrapper result_wrapper = 3;
+    bool return_token = 4;
 }
