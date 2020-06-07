@@ -6,7 +6,7 @@ DESCRIPTION = "Protocol for Wearable Cognitive Assistance Applications"
 
 setuptools.setup(
     name="gabriel-protocol",
-    version="0.0.3",
+    version="0.0.5",
     author="Roger Iyengar",
     author_email="ri@rogeriyengar.com",
     description=DESCRIPTION,
@@ -24,6 +24,6 @@ setuptools.setup(
     ],
     python_requires='>=3.5',
     install_requires=[
-        "protobuf",
+        "protobuf>=3.10",
     ],
 )
