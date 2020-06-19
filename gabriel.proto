@@ -100,3 +100,14 @@ message FromEngine {
     ResultWrapper result_wrapper = 3;
     bool return_token = 4;
 }
+
+message ToServerRunner {
+    message Welcome {
+        string filter_name = 1;
+    }
+
+    oneof heartbeat_welcome_or_result {
+        ResultWrapper result_wrapper = 1;
+	Welcome welcome = 2;
+    }
+}
