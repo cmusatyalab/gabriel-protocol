@@ -82,7 +82,7 @@ message ToClient {
 
     oneof welcome_or_result {
         ResultWrapper result_wrapper = 1;
-	WelcomeMessage welcome = 2;
+	Welcome welcome = 2;
     }
 
     bool return_token = 3;
@@ -106,7 +106,7 @@ message ToServerRunner {
         string source_name = 1;
     }
 
-    oneof heartbeat_welcome_or_result {
+    oneof welcome_or_result {
         ResultWrapper result_wrapper = 1;
 	Welcome welcome = 2;
     }
